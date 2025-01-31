@@ -1,4 +1,4 @@
-import { Arrow } from './icons/arrow';
+import { Arrow } from '../icons/arrow';
 
 export const getColorFromInitials = (initials: string) => {
   const colors = [
