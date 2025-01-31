@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getColorFromInitials } from '../../utils';
+import { getColorFromInitials } from '../../utils/utils';
 
 export const Container = styled.div<{ isExpanded: boolean }>`
   display: flex;

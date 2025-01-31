@@ -1,5 +1,4 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Patient } from '../../api';
 import {
   Avatar,
   Container,
@@ -11,7 +10,8 @@ import {
   ProfileImage,
 } from './stlye';
 import moment from 'moment';
-import { getIcons, getInitials } from '../../utils';
+import { getIcons, getInitials } from '../../utils/utils';
+import { Patient } from '../../redux/patients/patients.types';
 
 interface Props {
   patient: Patient;

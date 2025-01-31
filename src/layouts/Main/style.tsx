@@ -15,6 +15,33 @@ export const Title = styled.h1`
   color: white;
 `;
 
+export const LoaderContainer = styled.div`
+  width: calc(100% - 40px);
+  height: calc(100% - 40px - 35px - 20px);
+`;
+
+export const Spinner = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #7345fc;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
 export const ListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
