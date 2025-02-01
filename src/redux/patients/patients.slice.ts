@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { Patient, patientsInitialState } from "./patients.types";
+import { NewPatient, Patient, patientsInitialState } from "./patients.types";
 
 const patients = createSlice({
     name: 'patients',
@@ -35,6 +35,13 @@ const patients = createSlice({
                 store.selectedPatient = null;
             }
         },
+        addPatient(store, action: PayloadAction<NewPatient>) {
+            const helper = store.patients
+            // Get max ID + 1
+            const newId = helper.length > 0 ? Math.max(...helper.map(patient => patient.id)) + 1 : 1;
+            const createdAt = new Date()
+            helper.push({ ...action.payload, id: newId, createdAt: createdAt })
+        }
 
     }
 })
@@ -46,6 +53,7 @@ export const {
     selectPatient,
     clearSelectedPatient,
     editPatient,
-    deletePatient
+    deletePatient,
+    addPatient
 } = patients.actions;
 export const patientsReducer = patients.reducer;

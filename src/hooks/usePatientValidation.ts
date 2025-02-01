@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Patient } from "../redux/patients/patients.types";
+import { NewPatient, Patient } from "../redux/patients/patients.types";
 
 export const usePatientValidation = () => {
     const [errors, setErrors] = useState<{ name?: string; website?: string; description?: string }>({});
 
-    const validate = (patient: Patient | null) => {
+    const validate = (patient: Patient | NewPatient | null) => {
         const newErrors: { name?: string; website?: string; description?: string } = {};
 
         if (!patient?.name || patient.name.trim().length < 3) {

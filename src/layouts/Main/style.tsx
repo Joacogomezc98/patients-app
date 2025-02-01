@@ -42,6 +42,16 @@ export const Spinner = styled.div`
   }
 `;
 
+export const Toolbar = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  height: 150px;
+  width: calc(100% - 40px);
+  background-color: rgb(227 232 244);
+  border-radius: 20px;
+`;
+
 export const ListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -51,9 +61,9 @@ export const ListContainer = styled.div`
   border-radius: 20px;
   padding: 20px;
   width: calc(100% - 40px);
-  height: calc(
+  /* height: calc(
     100% - 40px - 35px - 20px
-  ); //cover entire page - padding - title - gap
+  ); //cover entire page - padding - title - gap */
   transition: all 0.3s ease-in-out;
   overflow: auto;
 

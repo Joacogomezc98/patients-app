@@ -3,9 +3,9 @@ import { Status, statusInitialState } from "../store.types";
 export interface Patient {
     createdAt: Date;
     name: string;
-    avatar: string;
+    avatar?: string;
     description: string;
-    website: string;
+    website?: string;
     id: number;
 }
 
@@ -20,3 +20,5 @@ export const patientsInitialState: Patients = {
     patients: [],
     selectedPatient: null
 }
+
+export interface NewPatient { name: string; avatar?: string; description: string; website?: string; }
