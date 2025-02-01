@@ -31,6 +31,7 @@ import {
 import moment from 'moment';
 import { Actionbutton } from '../Button';
 import { ConfirmationModal } from '../ConfirmationModal';
+import { usePatientValidation } from '../../hooks/usePatientValidation';
 
 export const PatientModal: React.FC = () => {
   const patient = useSelector(selectActivePatient);
@@ -42,6 +43,9 @@ export const PatientModal: React.FC = () => {
   const [confirmAction, setConfirmAction] = useState<'save' | 'delete' | null>(
     null,
   );
+
+  //Validations
+  const { errors, validate } = usePatientValidation();
 
   const dispatch = useDispatch();
 
@@ -86,6 +90,7 @@ export const PatientModal: React.FC = () => {
     setEditedPatient(patient);
   };
   const handleSave = () => {
+    if (!validate(editedPatient)) return; // Stop if validation fails
     setConfirmAction('save');
   };
 
@@ -144,6 +149,7 @@ export const PatientModal: React.FC = () => {
                     value={editedPatient?.name || ''}
                     onChange={handleInputChange}
                   />
+                  {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
                 </FormRow>
                 <FormRow>
                   <label htmlFor="name">Avatar URL:</label>
@@ -162,6 +168,9 @@ export const PatientModal: React.FC = () => {
                     value={editedPatient?.website || ''}
                     onChange={handleInputChange}
                   />
+                  {errors.website && (
+                    <p style={{ color: 'red' }}>{errors.website}</p>
+                  )}
                 </FormRow>
                 <FormRow>
                   <label htmlFor="description">Description:</label>
@@ -171,6 +180,9 @@ export const PatientModal: React.FC = () => {
                     value={editedPatient?.description || ''}
                     onChange={handleInputChange}
                   />
+                  {errors.description && (
+                    <p style={{ color: 'red' }}>{errors.description}</p>
+                  )}
                 </FormRow>
                 <ButtonsSection editMode={editMode}>
                   <Actionbutton

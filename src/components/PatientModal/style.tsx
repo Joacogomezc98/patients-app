@@ -89,6 +89,13 @@ export const FormRow = styled.div`
     margin: 0;
     width: 70px;
   }
+  p {
+    font-family: Ubuntu, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgb(29 33 47);
+    margin: 0;
+  }
 `;
 
 export const Input = styled.input`
