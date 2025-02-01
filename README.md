@@ -45,21 +45,21 @@ Ensure you have the following installed:
 
 - **Redux Toolkit**: Simplifies the process of writing Redux logic and managing the application state.
 
-- **Redux-Saga**: Manages side effects in the application, such as data fetching and asynchronous tasks.
+- **Redux-Saga**: Manages side effects in the application, such as data fetching.
 
-- **Axios**: A promise-based HTTP client for making requests to the backend API.
+- **Axios**: A promise-based HTTP client for making requests to the API.
 
 - **Styled-Components**: Allows for writing CSS-in-JS, making it easier to style components with scoped styles.
 
-- **Moment.js**: A library for parsing, validating, manipulating, and formatting dates.
-
-- **Vite**: A build tool that provides a faster and leaner development experience for modern web projects.
+- **Moment.js**: Used this library for parsing, manipulating, and formatting dates.
 
 - **ESLint**: A tool for identifying and fixing problems in JavaScript code, ensuring code quality and consistency.
 
-- **Prettier**: An opinionated code formatter that enforces a consistent style by parsing code and re-printing it.
+- **Prettier**: Enforcing a consistent style throughout the code-
 
 ### Project Structure
+
+The project is organized within the following structure:
 
 - **src/components**: Contains reusable UI components such as buttons, modals, and patient cards.
 
@@ -67,7 +67,7 @@ Ensure you have the following installed:
 
 - **src/hooks**: Contains custom hooks, such as `usePatientValidation`, for encapsulating reusable logic.
 
-- **src/layouts**: Contains layout components that define the overall structure of the application.
+- **src/layouts**: Contains layout components that define the overall structure of the application. This are the views within the aplication (only one page in this case)
 
 - **src/utils**: Contains utility functions and helper methods used throughout the application.
 
