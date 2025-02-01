@@ -11,10 +11,12 @@ export interface Patient {
 
 export interface Patients {
     status: Status;
-    patients: Patient[]
+    patients: Patient[];
+    selectedPatient: Patient | null;
 }
 
 export const patientsInitialState: Patients = {
     status: statusInitialState,
-    patients: []
+    patients: [],
+    selectedPatient: null
 }

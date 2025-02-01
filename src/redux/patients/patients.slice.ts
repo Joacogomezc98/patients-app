@@ -18,6 +18,24 @@ const patients = createSlice({
             store.status.isPatientsLoading = false;
             store.status.error = action.payload;
         },
+        selectPatient(store, action: PayloadAction<Patient>) {
+            store.selectedPatient = action.payload
+        },
+        clearSelectedPatient(store) {
+            store.selectedPatient = null
+        },
+        editPatient(store, action: PayloadAction<Patient>) {
+            const target = store.patients.findIndex(p => p.id === action.payload.id)
+            store.patients[target] = action.payload
+            store.selectedPatient = action.payload
+        },
+        deletePatient(store, action: PayloadAction<number>) {
+            store.patients = store.patients.filter((p) => p.id !== action.payload);
+            if (store.selectedPatient?.id === action.payload) {
+                store.selectedPatient = null;
+            }
+        },
+
     }
 })
 
@@ -25,6 +43,9 @@ export const {
     fetchPatients,
     fetchPatientsSuccess,
     fetchPatientsError,
-
+    selectPatient,
+    clearSelectedPatient,
+    editPatient,
+    deletePatient
 } = patients.actions;
 export const patientsReducer = patients.reducer;

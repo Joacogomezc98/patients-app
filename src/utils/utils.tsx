@@ -1,4 +1,5 @@
 import { Arrow } from '../icons/arrow';
+import { CloseIcon } from '../icons/close';
 
 export const getColorFromInitials = (initials: string) => {
   const colors = [
@@ -40,6 +41,9 @@ export const getIcons = (name: string) => {
   icons.set('arrowLeft', <Arrow degree={0} />);
 
   icons.set('arrowRight', <Arrow degree={180} />);
+
+  //Close
+  icons.set('close', <CloseIcon />);
 
   return icons.get(name);
 };

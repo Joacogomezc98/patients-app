@@ -9,7 +9,11 @@ import {
 } from './style';
 import { Patient } from '../../redux/patients/patients.types';
 import { useSelector } from 'react-redux';
-import { selectPatientsStatus } from '../../redux/patients/selectors';
+import {
+  selectActivePatient,
+  selectPatientsStatus,
+} from '../../redux/patients/selectors';
+import { PatientModal } from '../../components/PatientModal';
 
 interface Props {
   patients: Patient[];
@@ -17,6 +21,7 @@ interface Props {
 
 export const Main: React.FC<Props> = ({ patients }) => {
   const patientStatus = useSelector(selectPatientsStatus);
+  const activePatient = useSelector(selectActivePatient);
 
   return (
     <Container>
@@ -30,6 +35,8 @@ export const Main: React.FC<Props> = ({ patients }) => {
           patients.map((p) => <PatientCard patient={p} />)
         )}
       </ListContainer>
+
+      {activePatient && <PatientModal />}
     </Container>
   );
 };

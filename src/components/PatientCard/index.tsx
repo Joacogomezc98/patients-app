@@ -12,6 +12,8 @@ import {
 import moment from 'moment';
 import { getIcons, getInitials } from '../../utils/utils';
 import { Patient } from '../../redux/patients/patients.types';
+import { useDispatch } from 'react-redux';
+import { selectPatient } from '../../redux/patients/patients.slice';
 
 interface Props {
   patient: Patient;
@@ -27,12 +29,17 @@ export const PatientCard: React.FC<Props> = ({ patient }) => {
 
   const [arrowHover, setArrowHover] = useState(false);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     setUserInitials(getInitials(patient.name));
   }, [patient]);
 
   //Functions
-  const handleClick = () => setIsExpanded((prev) => !prev);
+  const handleIconClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsExpanded((prev) => !prev);
+  };
   const handleMouseEnter = () => setArrowHover(true);
   const handleMouseLeave = () => setArrowHover(false);
 
@@ -48,7 +55,10 @@ export const PatientCard: React.FC<Props> = ({ patient }) => {
   }, [isExpanded, arrowHover]);
 
   return (
-    <Container isExpanded={isExpanded}>
+    <Container
+      isExpanded={isExpanded}
+      onClick={() => dispatch(selectPatient(patient))}
+    >
       <MainInfoContainer>
         {imgError ? (
           <ProfileImage initials={userInitials}>{userInitials}</ProfileImage>
@@ -63,7 +73,7 @@ export const PatientCard: React.FC<Props> = ({ patient }) => {
           </DetailsContainer>
         </DataContainer>
         <ExpandIcon
-          onClick={handleClick}
+          onClick={handleIconClick}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

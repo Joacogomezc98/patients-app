@@ -8,6 +8,7 @@ export const Container = styled.div<{ isExpanded: boolean }>`
   background-color: white;
   border-radius: 10px;
   width: calc(100% - 40px);
+  height: 110px;
   min-height: ${(props) => (props.isExpanded ? '250px' : '110px')};
   grid-column: ${(props) => (props.isExpanded ? 'span 2' : 'span 1')};
   gap: 10px;
