@@ -30,18 +30,18 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
           <CloseButton onClick={onCancel}>{getIcons('close')}</CloseButton>
         </ModalHeader>
         <ModalBody>
-          <p>{message}</p>
+          <h3>{message}</h3>
           <ButtonsSection editMode={false}>
             <Actionbutton
               text="Cancel"
               textColor="black"
-              backgroundColor="lightgray"
+              backgroundColor="transparent"
               onClick={onCancel}
             />
             <Actionbutton
               text="Confirm"
               textColor="white"
-              backgroundColor="red"
+              backgroundColor="#4d90fe"
               onClick={onConfirm}
             />
           </ButtonsSection>

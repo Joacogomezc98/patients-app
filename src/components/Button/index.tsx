@@ -16,11 +16,16 @@ export const Actionbutton: React.FC<Props> = ({
   text,
   icon,
 }) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    onClick();
+  };
+
   return (
     <Container
       color={textColor}
       backgroundColor={backgroundColor}
-      onClick={onClick}
+      onClick={handleClick}
     >
       {icon}
       {text}

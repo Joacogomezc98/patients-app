@@ -44,6 +44,13 @@ export const ModalBody = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  h3 {
+    font-family: Ubuntu, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgb(29 33 47);
+    margin: 0;
+  }
 `;
 
 export const CloseButton = styled.div`
