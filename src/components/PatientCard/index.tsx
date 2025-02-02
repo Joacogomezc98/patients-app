@@ -3,10 +3,12 @@ import {
   Avatar,
   Container,
   DataContainer,
+  DateInfo,
   DetailsContainer,
   ExpandedSection,
   ExpandIcon,
   MainInfoContainer,
+  PatientInfo,
   ProfileImage,
 } from './stlye';
 import moment from 'moment';
@@ -60,26 +62,30 @@ export const PatientCard: React.FC<Props> = ({ patient }) => {
       onClick={() => dispatch(selectPatient(patient))}
     >
       <MainInfoContainer>
-        {imgError ? (
-          <ProfileImage initials={userInitials}>{userInitials}</ProfileImage>
-        ) : (
-          <Avatar src={patient.avatar} onError={() => setImgError(true)} />
-        )}
-        <DataContainer>
-          <h2>{patient.name}</h2>
-          <DetailsContainer>
-            <h3>#{patient.id}</h3>
-            <h3>Created: {moment(patient.createdAt).format('DD/MM/YYYY')}</h3>
-          </DetailsContainer>
-        </DataContainer>
-        <ExpandIcon
-          onClick={handleIconClick}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          {getIcons(iconType)}
-        </ExpandIcon>
-        ;
+        <PatientInfo>
+          {imgError ? (
+            <ProfileImage initials={userInitials}>{userInitials}</ProfileImage>
+          ) : (
+            <Avatar src={patient.avatar} onError={() => setImgError(true)} />
+          )}
+          <DataContainer>
+            <h2>{patient.name}</h2>
+            <DetailsContainer>
+              <h3>Patient ID: #{patient.id}</h3>
+            </DetailsContainer>
+          </DataContainer>
+          <ExpandIcon
+            onClick={handleIconClick}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            {getIcons(iconType)}
+          </ExpandIcon>
+        </PatientInfo>
+        <DateInfo>
+          {getIcons('calendar')}
+          <h3>Created At: {moment(patient.createdAt).format('DD/MM/YYYY')}</h3>
+        </DateInfo>
       </MainInfoContainer>
 
       {isExpanded && (

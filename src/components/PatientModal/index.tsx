@@ -5,6 +5,7 @@ import {
   Form,
   FormRow,
   Input,
+  MainInfoContainer,
   ModalBody,
   ModalContainer,
   ModalHeader,
@@ -25,7 +26,6 @@ import {
   DataContainer,
   DetailsContainer,
   ExpandedSection,
-  MainInfoContainer,
   ProfileImage,
 } from '../PatientCard/stlye';
 import moment from 'moment';

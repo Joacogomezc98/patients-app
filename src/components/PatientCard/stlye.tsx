@@ -7,6 +7,7 @@ export const Container = styled.div<{ isExpanded: boolean }>`
   padding: 20px;
   background-color: white;
   border-radius: 10px;
+  border: 1px solid rgb(230 232 235);
   width: calc(100% - 40px);
   height: 110px;
   min-height: ${(props) => (props.isExpanded ? '250px' : '110px')};
@@ -29,51 +30,67 @@ export const Container = styled.div<{ isExpanded: boolean }>`
 
 export const MainInfoContainer = styled.div`
   display: flex;
+  flex-direction: column;
   position: relative;
   width: 100%;
   gap: 20px;
   flex-grow: 1;
+  h3 {
+    margin: 0;
+    font-size: 0.7rem;
+    color: rgb(107 114 128);
+  }
+`;
+
+export const PatientInfo = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+export const DateInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
 `;
 
 export const DataContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
   h2 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #1d212f;
   }
 `;
 
 export const Avatar = styled.img`
   border-radius: 50%;
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
+  flex-shrink: 0;
 `;
 
 export const DetailsContainer = styled.div`
   display: flex;
   gap: 20px;
-  h3 {
+  div {
     display: flex;
     align-items: center;
-    margin: 0;
-    font-size: 0.7rem;
-    color: #1d212f;
+    gap: 5px;
   }
 `;
 
 export const ProfileImage = styled.div<{ initials: string }>`
   font-family: Arial, Helvetica, sans-serif;
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   background: ${({ initials }) => getColorFromInitials(initials)};
   font-size: 25px;
   color: white;
   text-align: center;
-  line-height: 70px;
+  line-height: 50px;
+  flex-shrink: 0;
 `;
 
 export const ExpandIcon = styled.div`

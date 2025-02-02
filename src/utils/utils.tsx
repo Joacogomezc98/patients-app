@@ -1,4 +1,6 @@
+import { AddIcon } from '../icons/addIcon';
 import { Arrow } from '../icons/arrow';
+import { CalendarIcon } from '../icons/calendar';
 import { CloseIcon } from '../icons/close';
 
 export const getColorFromInitials = (initials: string) => {
@@ -24,8 +26,8 @@ export const getInitials = (str: string) => {
     .map((name) => name[0])
     .join('')
     .toUpperCase();
-
-  return initials;
+  //max 2 initials
+  return initials.length > 2 ? initials.slice(0, 2) : initials;
 };
 
 export const getIcons = (name: string) => {
@@ -42,8 +44,13 @@ export const getIcons = (name: string) => {
 
   icons.set('arrowRight', <Arrow degree={180} />);
 
+  //Add
+  icons.set('add', <AddIcon />);
+
   //Close
   icons.set('close', <CloseIcon />);
 
+  //Calendar
+  icons.set('calendar', <CalendarIcon />);
   return icons.get(name);
 };
