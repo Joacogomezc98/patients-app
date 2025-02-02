@@ -6,7 +6,7 @@ import {
   LoaderContainer,
   Spinner,
   Title,
-  Toolbar,
+  TitleContainer,
 } from './style';
 import { Patient } from '../../redux/patients/patients.types';
 import { useSelector } from 'react-redux';
@@ -17,6 +17,7 @@ import {
 import { PatientModal } from '../../components/PatientModal';
 import { Actionbutton } from '../../components/Button';
 import { AddPatientForm } from '../../components/AddForm';
+import { getIcons } from '../../utils/utils';
 
 interface Props {
   patients: Patient[];
@@ -38,15 +39,19 @@ export const Main: React.FC<Props> = ({ patients }) => {
 
   return (
     <Container>
-      <Title>Patients Portal</Title>
-      <Toolbar>
+      <TitleContainer>
+        <Title>
+          <img src="logo.png" alt="logo" />
+          Patients Portal
+        </Title>
         <Actionbutton
-          text="+ Add Patient"
+          icon={getIcons('add')}
+          text="Add Patient"
           textColor="white"
-          backgroundColor="black"
+          backgroundColor="rgb(36 99 235)"
           onClick={handleNewPatient}
         />
-      </Toolbar>
+      </TitleContainer>
       <ListContainer>
         {patientStatus.isPatientsLoading ? (
           <LoaderContainer>

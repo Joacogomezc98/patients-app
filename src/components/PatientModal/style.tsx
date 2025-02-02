@@ -128,3 +128,15 @@ export const Textarea = styled.textarea`
     display: none;
   }
 `;
+
+export const MainInfoContainer = styled.div`
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  flex-grow: 1;
+  h3 {
+    margin: 0;
+    font-size: 0.7rem;
+    color: rgb(107 114 128);
+  }
+`;

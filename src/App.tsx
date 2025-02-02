@@ -13,9 +13,5 @@ export const App = () => {
     dispatch(fetchPatients());
   }, []);
 
-  useEffect(() => {
-    console.log(patientsData);
-  }, [patientsData]);
-
   return <Main patients={patientsData} />;
 };

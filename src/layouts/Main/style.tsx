@@ -3,16 +3,31 @@ import styled from 'styled-components';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 20px 40px;
-  height: calc(100vh - 40px);
-  width: calc(100vw - 80px);
+  height: 100vh;
+  width: 100vw;
   gap: 20px;
 `;
 
-export const Title = styled.h1`
+export const Title = styled.div`
   margin: 0;
-  font-size: 2rem;
-  color: white;
+  font-size: 1.5rem;
+  color: black;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+`;
+
+export const TitleContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  height: 40px;
+  background-color: white;
+  img {
+    height: 30px;
+  }
 `;
 
 export const LoaderContainer = styled.div`
@@ -42,28 +57,14 @@ export const Spinner = styled.div`
   }
 `;
 
-export const Toolbar = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  height: 150px;
-  width: calc(100% - 40px);
-  background-color: rgb(227 232 244);
-  border-radius: 20px;
-`;
-
 export const ListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   column-gap: 10px;
   row-gap: 10px;
-  background-color: rgb(227 232 244);
   border-radius: 20px;
-  padding: 20px;
-  width: calc(100% - 40px);
-  /* height: calc(
-    100% - 40px - 35px - 20px
-  ); //cover entire page - padding - title - gap */
+  padding: 0px 40px 20px 40px;
+  width: calc(100% - 80px);
   transition: all 0.3s ease-in-out;
   overflow: auto;
 
