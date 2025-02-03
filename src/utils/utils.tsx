@@ -2,6 +2,8 @@ import { AddIcon } from '../icons/add';
 import { Arrow } from '../icons/arrow';
 import { CalendarIcon } from '../icons/calendar';
 import { CloseIcon } from '../icons/close';
+import { DeleteIcon } from '../icons/delete';
+import { EditIcon } from '../icons/edit';
 import { SearchIcon } from '../icons/search';
 
 export const getColorFromInitials = (initials: string) => {
@@ -54,7 +56,14 @@ export const getIcons = (name: string) => {
   //Calendar
   icons.set('calendar', <CalendarIcon />);
 
+  //Delete
+  icons.set('delete', <DeleteIcon />);
+
   //Search
   icons.set('search', <SearchIcon />);
+
+  //Edit
+  icons.set('edit', <EditIcon />);
+
   return icons.get(name);
 };

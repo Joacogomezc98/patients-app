@@ -187,6 +187,7 @@ export const PatientModal: React.FC = () => {
                 <ButtonsSection editMode={editMode}>
                   <Actionbutton
                     text="Delete patient"
+                    icon={getIcons('delete')}
                     textColor="#f00"
                     backgroundColor="#ffebeb"
                     onClick={handleDelete}
@@ -199,7 +200,7 @@ export const PatientModal: React.FC = () => {
                       onClick={handleCancel}
                     />
                     <Actionbutton
-                      text="Save"
+                      text="Save changes"
                       textColor="white"
                       backgroundColor="#6dbc70"
                       onClick={handleSave}
