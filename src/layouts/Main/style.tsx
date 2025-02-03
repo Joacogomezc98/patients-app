@@ -30,6 +30,12 @@ export const TitleContainer = styled.div`
   }
 `;
 
+export const ToolsContainers = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+`;
+
 export const LoaderContainer = styled.div`
   width: calc(100% - 40px);
   height: calc(100% - 40px - 35px - 20px);

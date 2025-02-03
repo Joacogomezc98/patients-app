@@ -7,6 +7,7 @@ import {
   Spinner,
   Title,
   TitleContainer,
+  ToolsContainers,
 } from './style';
 import { Patient } from '../../redux/patients/patients.types';
 import { useSelector } from 'react-redux';
@@ -18,6 +19,8 @@ import { PatientModal } from '../../components/PatientModal';
 import { Actionbutton } from '../../components/Button';
 import { AddPatientForm } from '../../components/AddForm';
 import { getIcons } from '../../utils/utils';
+import { SearchBar } from '../../components/Searchbar';
+import { EmptyList } from '../../components/EmptyList';
 
 interface Props {
   patients: Patient[];
@@ -28,6 +31,8 @@ export const Main: React.FC<Props> = ({ patients }) => {
   const activePatient = useSelector(selectActivePatient);
 
   const [openModal, setOpenModal] = useState<boolean>(false);
+
+  const [searchedPatients, setSearchedPatients] = useState<Patient[]>([]);
 
   const handleNewPatient = () => {
     setOpenModal(true);
@@ -44,21 +49,29 @@ export const Main: React.FC<Props> = ({ patients }) => {
           <img src="logo.png" alt="logo" />
           Patients Portal
         </Title>
-        <Actionbutton
-          icon={getIcons('add')}
-          text="Add Patient"
-          textColor="white"
-          backgroundColor="rgb(36 99 235)"
-          onClick={handleNewPatient}
-        />
+        <ToolsContainers>
+          <SearchBar
+            patients={patients}
+            setPatientsList={setSearchedPatients}
+          />
+          <Actionbutton
+            icon={getIcons('add')}
+            text="Add Patient"
+            textColor="white"
+            backgroundColor="rgb(36 99 235)"
+            onClick={handleNewPatient}
+          />
+        </ToolsContainers>
       </TitleContainer>
       <ListContainer>
         {patientStatus.isPatientsLoading ? (
           <LoaderContainer>
             <Spinner />
           </LoaderContainer>
+        ) : searchedPatients.length === 0 ? (
+          <EmptyList name="patients" />
         ) : (
-          patients.map((p) => <PatientCard patient={p} />)
+          searchedPatients.map((p) => <PatientCard patient={p} />)
         )}
       </ListContainer>
 
