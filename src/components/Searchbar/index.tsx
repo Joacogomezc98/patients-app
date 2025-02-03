@@ -15,6 +15,7 @@ export const SearchBar: React.FC<Props> = ({ setPatientsList, patients }) => {
     setSearch(e);
   };
 
+  //Filter the patients list based on the search input (if search is empty, show all patients)
   useEffect(() => {
     if (search === '') {
       setPatientsList(patients);

@@ -4,6 +4,7 @@ import { NewPatient, Patient } from "../redux/patients/patients.types";
 export const usePatientValidation = () => {
     const [errors, setErrors] = useState<{ name?: string; website?: string; description?: string }>({});
 
+    // Validate the patient object
     const validate = (patient: Patient | NewPatient | null) => {
         const newErrors: { name?: string; website?: string; description?: string, avatar?: string } = {};
 

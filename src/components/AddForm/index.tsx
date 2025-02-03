@@ -31,8 +31,10 @@ export const AddPatientForm: React.FC<AddPatientFormProps> = ({ onClose }) => {
     description: '',
   });
 
+  //Validations hook
   const { errors, validate } = usePatientValidation();
 
+  //Confimation state
   const [confirmAction, setConfirmAction] = useState<boolean>(false);
 
   //Nofitication handler
@@ -50,6 +52,7 @@ export const AddPatientForm: React.FC<AddPatientFormProps> = ({ onClose }) => {
     onClose();
   };
 
+  //Data change handlers
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
@@ -155,7 +158,7 @@ export const AddPatientForm: React.FC<AddPatientFormProps> = ({ onClose }) => {
           </ModalBody>
         </ModalContainer>
       </ModalOverlay>
-      {/* Show Confirmation Modal for Save or Delete */}
+      {/* Show Confirmation Modal */}
       {confirmAction && (
         <ConfirmationModal
           message={'Are you sure you add this new patient?'}
@@ -163,7 +166,7 @@ export const AddPatientForm: React.FC<AddPatientFormProps> = ({ onClose }) => {
           onCancel={() => setConfirmAction(false)}
         />
       )}
-
+      {/* Show Notification */}
       <Notification
         type={notification.type}
         message={notification.message}

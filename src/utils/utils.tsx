@@ -4,6 +4,7 @@ import { CalendarIcon } from '../icons/calendar';
 import { CloseIcon } from '../icons/close';
 import { DeleteIcon } from '../icons/delete';
 import { EditIcon } from '../icons/edit';
+import { ErrorIcon } from '../icons/error';
 import { SearchIcon } from '../icons/search';
 
 export const getColorFromInitials = (initials: string) => {
@@ -64,6 +65,9 @@ export const getIcons = (name: string) => {
 
   //Edit
   icons.set('edit', <EditIcon />);
+
+  //Error
+  icons.set('error', <ErrorIcon />);
 
   return icons.get(name);
 };

@@ -21,6 +21,7 @@ import { AddPatientForm } from '../../components/AddForm';
 import { getIcons } from '../../utils/utils';
 import { SearchBar } from '../../components/Searchbar';
 import { EmptyList } from '../../components/EmptyList';
+import { ErrorComponent } from '../../components/Error';
 
 interface Props {
   patients: Patient[];
@@ -64,11 +65,16 @@ export const Main: React.FC<Props> = ({ patients }) => {
         </ToolsContainers>
       </TitleContainer>
       <ListContainer>
-        {patientStatus.isPatientsLoading ? (
+        {/* If there is an error, show the error message */}
+        {patientStatus.error ? (
+          <ErrorComponent text={patientStatus.error!} />
+        ) : patientStatus.isPatientsLoading ? (
+          // If the patients are loading, show a spinner
           <LoaderContainer>
             <Spinner />
           </LoaderContainer>
         ) : searchedPatients.length === 0 ? (
+          // If there are no patients, show an empty list
           <EmptyList name="patients" />
         ) : (
           searchedPatients.map((p) => <PatientCard patient={p} />)

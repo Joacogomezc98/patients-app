@@ -17,6 +17,7 @@ export const Actionbutton: React.FC<Props> = ({
   icon,
 }) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    // Prevent the form from submitting
     e.preventDefault();
     onClick();
   };

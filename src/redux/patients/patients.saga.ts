@@ -3,7 +3,7 @@ import { call, put, takeEvery } from "redux-saga/effects";
 import { getPatientsData } from "../../api";
 import { fetchPatients, fetchPatientsError, fetchPatientsSuccess } from "./patients.slice";
 
-// Saga function
+// Patients Saga function
 function* fetchPatientsSaga(): Generator<AnyAction, void, any> {
     try {
         const patients = yield call(getPatientsData);

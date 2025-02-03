@@ -33,11 +33,12 @@ export const PatientCard: React.FC<Props> = ({ patient }) => {
 
   const dispatch = useDispatch();
 
+  //Saves the initials of the user for multiple usage
   useEffect(() => {
     setUserInitials(getInitials(patient.name));
   }, [patient]);
 
-  //Functions
+  //Handle the expandable section
   const handleIconClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsExpanded((prev) => !prev);
