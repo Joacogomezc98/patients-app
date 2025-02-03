@@ -29,7 +29,7 @@ Ensure you have the following installed:
 3. **Start the application**:
 
    ```bash
-   npm run build
+   npm run dev
    ```
 
    This will start the application locally on `http://localhost:5173`.
