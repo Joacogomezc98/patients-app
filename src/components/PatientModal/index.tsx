@@ -32,6 +32,7 @@ import moment from 'moment';
 import { Actionbutton } from '../Button';
 import { ConfirmationModal } from '../ConfirmationModal';
 import { usePatientValidation } from '../../hooks/usePatientValidation';
+import { NotificationType, Notification } from '../Notification';
 
 export const PatientModal: React.FC = () => {
   const patient = useSelector(selectActivePatient);
@@ -43,6 +44,20 @@ export const PatientModal: React.FC = () => {
   const [confirmAction, setConfirmAction] = useState<'save' | 'delete' | null>(
     null,
   );
+
+  //Nofitication handler
+  const [notification, setNotification] = useState<{
+    message: string;
+    open: boolean;
+    type?: NotificationType;
+  }>({
+    message: '',
+    open: false,
+  });
+
+  const handleCloseNotification = () => {
+    setNotification({ message: '', open: false });
+  };
 
   //Validations
   const { errors, validate } = usePatientValidation();
@@ -101,6 +116,12 @@ export const PatientModal: React.FC = () => {
   const confirmActionHandler = () => {
     if (confirmAction === 'save' && editedPatient) {
       dispatch(editPatient(editedPatient));
+      // Show notification
+      setNotification({
+        message: 'Patient edited successfully!',
+        open: true,
+        type: NotificationType.SUCCESS,
+      });
       setEditMode(false);
     } else if (confirmAction === 'delete' && patient) {
       dispatch(deletePatient(patient.id));
@@ -249,6 +270,12 @@ export const PatientModal: React.FC = () => {
           onCancel={() => setConfirmAction(null)}
         />
       )}
+      <Notification
+        type={notification.type}
+        message={notification.message}
+        open={notification.open}
+        onClose={handleCloseNotification}
+      />
     </>
   );
 };

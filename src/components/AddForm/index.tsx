@@ -18,6 +18,7 @@ import { NewPatient } from '../../redux/patients/patients.types';
 import { usePatientValidation } from '../../hooks/usePatientValidation';
 import { ConfirmationModal } from '../ConfirmationModal';
 import { Actionbutton } from '../Button';
+import { Notification, NotificationType } from '../Notification';
 
 interface AddPatientFormProps {
   onClose: () => void;
@@ -33,6 +34,21 @@ export const AddPatientForm: React.FC<AddPatientFormProps> = ({ onClose }) => {
   const { errors, validate } = usePatientValidation();
 
   const [confirmAction, setConfirmAction] = useState<boolean>(false);
+
+  //Nofitication handler
+  const [notification, setNotification] = useState<{
+    message: string;
+    open: boolean;
+    type?: NotificationType;
+  }>({
+    message: '',
+    open: false,
+  });
+
+  const handleCloseNotification = () => {
+    setNotification({ message: '', open: false });
+    onClose();
+  };
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -58,7 +74,12 @@ export const AddPatientForm: React.FC<AddPatientFormProps> = ({ onClose }) => {
   const confirmActionHandler = () => {
     if (confirmAction) {
       dispatch(addPatient(newPatient));
-      onClose();
+      // Show notification
+      setNotification({
+        message: 'Patient added successfully!',
+        open: true,
+        type: NotificationType.SUCCESS,
+      });
     }
     setConfirmAction(false); // Close modal after action
   };
@@ -142,6 +163,13 @@ export const AddPatientForm: React.FC<AddPatientFormProps> = ({ onClose }) => {
           onCancel={() => setConfirmAction(false)}
         />
       )}
+
+      <Notification
+        type={notification.type}
+        message={notification.message}
+        open={notification.open}
+        onClose={handleCloseNotification}
+      />
     </>
   );
 };

@@ -5,7 +5,7 @@ export const usePatientValidation = () => {
     const [errors, setErrors] = useState<{ name?: string; website?: string; description?: string }>({});
 
     const validate = (patient: Patient | NewPatient | null) => {
-        const newErrors: { name?: string; website?: string; description?: string } = {};
+        const newErrors: { name?: string; website?: string; description?: string, avatar?: string } = {};
 
         if (!patient?.name || patient.name.trim().length < 3) {
             newErrors.name = "Name must be at least 3 characters long.";
@@ -13,6 +13,10 @@ export const usePatientValidation = () => {
 
         if (patient?.website && !/^https?:\/\/[^\s$.?#].[^\s]*$/.test(patient.website)) {
             newErrors.website = "Enter a valid URL (http:// or https://).";
+        }
+
+        if (patient?.avatar && !/^https?:\/\/[^\s$.?#].[^\s]*$/.test(patient.avatar)) {
+            newErrors.avatar = "Enter a valid URL (http:// or https://).";
         }
 
         if (!patient?.description || patient.description.trim().length < 10) {
